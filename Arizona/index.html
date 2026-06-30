@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700;800&family=Saira+Extra+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#E7EAF0;}
+  @media print{ body{background:#fff;} .sheet{box-shadow:none !important;} }
+</style>
+</helmet>
+<div style="min-height:100vh;width:100%;background:#E7EAF0;padding:38px 20px 60px;font-family:'DM Sans',sans-serif;display:flex;justify-content:center;">
+  <div class="sheet" style="width:1040px;max-width:100%;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(12,35,75,.18);">
+
+    <!-- ===================== COVER ===================== -->
+    <div style="background:linear-gradient(158deg,#0c234b 0%,#0c234b 58%,#0a1f43 100%);padding:52px 60px 46px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-60px;top:-50px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(171,5,32,.30),transparent 70%);"></div>
+      <div style="position:relative;">
+        <div style="display:flex;align-items:center;justify-content:center;">
+          <div style="display:flex;align-items:center;gap:13px;">
+            <div style="width:48px;height:48px;border-radius:11px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.3);"><img src="uploads/Arizona_Athletics.png" alt="Arizona" style="width:34px;height:34px;object-fit:contain;" /></div>
+            <div style="font-family:'Saira Extra Condensed',sans-serif;text-transform:uppercase;letter-spacing:.15em;font-weight:700;font-size:16px;color:#fff;">Arizona Athletics <span style="color:#E8A0AC;">&times;</span> JABA</div>
+          </div>
+          
+        </div>
+
+        <h1 style="font-family:'Anton',sans-serif;font-size:68px;line-height:.94;color:#fff;margin:60px 0 0;letter-spacing:.005em;text-align:center;">ARIZONA ATHLETES<br/><span style="font-size:80px;color:#AB0520;letter-spacing:0;position:relative;top:-14px;">&times;</span><br/>TUCSON BRANDS</h1>
+        <p style="font-size:16px;line-height:1.6;color:rgba(255,255,255,.8);margin-top:18px;max-width:620px;text-align:center;margin-left:auto;margin-right:auto;">Twenty-five of your athletes, paired with twenty-five real Tucson brands. Every idea is anchored to evidence already in your data: a deal the athlete already did, content they already make, or an activation that already happened.</p>
+
+        
+      </div>
+    </div>
+
+    <!-- ===================== BODY ===================== -->
+    <div style="padding:14px 56px 40px;">
+
+      <sc-for list="{{ groups }}" as="g">
+        <div>
+          
+
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:16px;">
+            <sc-for list="{{ g.items }}" as="item">
+              <div style="display:grid;grid-template-columns:188px minmax(0,1fr);gap:28px;background:#fff;border:1px solid #E8EAEE;border-radius:20px;box-shadow:0 1px 2px rgba(12,35,75,.04),0 8px 22px rgba(12,35,75,.06);padding:26px 28px;position:relative;"><div style="position:absolute;left:22px;top:16px;font-family:'Anton',sans-serif;font-size:22px;color:#C2C8D2;line-height:1;">{{ item.n }}</div>
+
+                <!-- ATHLETE COLUMN -->
+                <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+                  
+                  <div style="width:104px;height:104px;border-radius:50%;background:linear-gradient(180deg,#EAEDF3,#D6DBE6);border:3px solid #fff;box-shadow:0 5px 16px rgba(12,35,75,.16);overflow:hidden;"><div style="width:100%;height:100%;background-image:url('{{ item.photo }}');background-size:cover;background-position:center top;background-repeat:no-repeat;"></div></div>
+                  <div style="font-size:14px;font-weight:800;color:#0c234b;margin-top:11px;line-height:1.15;letter-spacing:-.01em;">{{ item.ath }}</div>
+                  <div style="font-size:11.5px;color:#97A0AE;margin-top:2px;font-weight:600;">{{ item.sportYear }}</div><div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:15px;padding-top:14px;border-top:1px solid #E8EAEE;width:100%;">
+                      
+                      <sc-if value="{{ item.hasLogo }}" hint-placeholder-val="{{ true }}"><div style="width:50px;height:50px;border-radius:12px;background:#fff;border:1px solid #E8EAEE;padding:6px;flex:none;"><div style="width:100%;height:100%;background-image:url('{{ item.logo }}');background-size:contain;background-position:center;background-repeat:no-repeat;"></div></div></sc-if>
+                      <sc-if value="{{ item.noLogo }}" hint-placeholder-val="{{ false }}"><div style="width:50px;height:50px;border-radius:12px;background:#0c234b;display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:15px;color:#fff;flex:none;">{{ item.brandInitials }}</div></sc-if>
+                      <div style="text-align:center;"><div style="font-size:13.5px;font-weight:800;color:#0c234b;line-height:1.1;">{{ item.brand }}</div><div style="font-size:11px;color:#97A0AE;margin-top:1px;">{{ item.cat }}</div><div style="font-size:10.5px;color:#7C879A;margin-top:7px;line-height:1.45;text-align:center;">{{ item.brandNote }}</div></div>
+                    </div>
+                </div>
+
+                <!-- MAIN COLUMN -->
+                <div style="min-width:0;">
+                  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;">
+                    <div style="display:flex;align-items:center;gap:9px;">
+                      
+                      <sc-if value="{{ item.draft }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Saira Extra Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px;font-weight:700;color:#9A6B00;background:rgba(245,158,11,.14);border-radius:999px;padding:2px 9px;">Draft</span></sc-if>
+                    </div>
+                    
+                  </div>
+
+                  <h2 style="font-family:'Anton',sans-serif;font-size:29px;color:#0c234b;line-height:1;letter-spacing:.01em;margin-top:13px;">{{ item.title }}</h2>
+
+                  
+
+                  <div style="margin-top:15px;">
+                    <span style="font-family:'Saira Extra Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-weight:700;font-size:12px;color:#97A0AE;">The idea</span>
+                    <p style="font-size:14px;line-height:1.62;color:#2b3a52;margin-top:5px;">{{ item.tie }}</p><div style="margin-top:15px;padding:13px 15px;background:#F7F8FA;border:1px solid #E8EAEE;border-radius:12px;"><div style="font-family:'Saira Extra Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:10px;font-weight:700;color:#97A0AE;margin-bottom:5px;">Sample caption · in their voice</div><div style="font-size:13.5px;line-height:1.5;color:#2b3a52;">{{ item.quote }}</div></div>
+                  </div>
+
+                  
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+
+      <!-- ===================== CLOSING: MEET JABA ===================== -->
+      <sc-if value="{{ showClosing }}" hint-placeholder-val="{{ true }}">
+      
+      </sc-if>
+
+      
+      
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1140,&quot;height&quot;:1500},&quot;showEligibility&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Report&quot;},&quot;groupByCategory&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Report&quot;},&quot;showClosing&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Report&quot;}}">
+class Component extends DCLogic {
+  data = [
+    {n:'01',ath:'Kaleb Kimaita',sport:'Track',year:'So',photo:'01_Kaleb_Kimaita.png',brand:'Roche / Ventana Diagnostics',cat:'Cancer diagnostics · Tucson',bucket:'Tucson Identity',ig:'',site:'diagnostics.roche.com',logo:'01_Roche-Ventana.png',brandNote:'Tucson maker of cancer diagnostics used by labs worldwide.',title:'TWO MINUTES TO SAVE A LIFE',quote:'2 minutes. one swab. somebody out there gets a second chance 🙏🏾 pulled up with @ventana to see how the fight actually starts, finding it first. who\'s coming to the next drive? #TeamMax',tie:'He already mobilized students for a campus blood-cancer donor drive (NMDP "Team Max"), swab in two minutes, maybe match a stranger. Ventana is the Tucson company whose diagnostics find the cancer first, so this is a mission match, not a product drop. Content: a direct-to-camera Reel in his two-minute energy plus a real Ventana lab visit. Proof: he co-led the drive; that post drew 607 likes, one of his strongest off-field posts.'},
+    {n:'02',ath:'Noah Fifita',sport:'Football QB',year:'Jr',photo:'02_Noah_Fifita.png',brand:'Jim Click Automotive',cat:'Auto dealer group',bucket:'Tucson Identity',ig:'',site:'jimclick.com',logo:'02_Jim-Click-Automotive.png',brandNote:'Major southern-Arizona auto dealer group and Wildcats supporter.',title:'FOR THE CITY',quote:'this city raised me, now we give back to it 🙏 teamed up with @jimclick to show up for Tucson\'s kids. To God be the glory #FirstDownFaith #GodD11D',tie:'This is not about cars, it is about Tucson. Fifita runs his own youth foundation (First Down Faith Foundation) for kids in this city, and Jim Click is one of Tucson\'s biggest local givers (the Millions for Tucson raffle, the Hall of Champions). The campaign is two Tucson institutions giving back together, the QB\'s foundation and the dealership\'s, with the car as the vehicle for a community day, not the point. He already creates dealership content and runs deep local-business relationships, so this is proven behavior; the foundation is what makes it personal to him.'},
+    {n:'03',ath:'Kara Mickelson',sport:'Cross Country',year:'Sr',photo:'03_Kara_Mickelson.png',brand:'Presta Coffee Roasters',cat:'Coffee roaster',bucket:'Tucson Identity',ig:'@prestacoffee',site:'prestacoffee.com',logo:'03_Presta-Coffee.png',brandNote:'Tucson specialty-coffee roaster with downtown cafes.',title:'SUNRISE, MILES, COFFEE',quote:'sunrise, a few miles, and a @prestacoffee in hand 🥂☕️ counting it all joy! the best mornings happen here, bear down',tie:'Her feed is already sunrise runs, desert trails, and coffee dates, all lowercase gratitude. Presta is the local roaster that fits the life she documents. Content: a soft morning-before-the-miles Reel, coffee at sunrise. Proof: recurring Tucson, coffee, and trail-run content, her real lane.'},
+    {n:'04',ath:'John Hart',sport:'Football TE',year:'Jr',photo:'04_John_Hart.png',brand:'Tanque Verde Ranch',cat:'Western ranch resort',bucket:'Tucson Identity',ig:'',site:'tanqueverderanch.com',logo:'04_Tanque-Verde-Ranch.png',brandNote:'Historic Sonoran-desert guest ranch, est. 1868.',title:'BEST SEAT IN THE HOUSE',quote:'real Arizona, no filter 🐎 best seat in the house @tanqueverderanch',tie:'He went to the Tucson Rodeo and posts vintage, understated, old-soul content. Tanque Verde is that Western Arizona experience distilled. Content: a quiet, cinematic day at the ranch, horses and desert. Proof: his own rodeo post, best seat in the house.'},
+    {n:'05',ath:'Emily Psarras',sport:'Track · Javelin',year:'So',photo:'05_Emily_Psarras.png',brand:'Tucson Sports Recovery',cat:'Recovery / sports-med',bucket:'Wellness & Recovery',ig:'@tucsonsportsrecovery',site:'tucsonsportsrecovery.com',logo:'05_Tucson-Sports-Recovery.png',brandNote:'Athlete-recovery studio: cold plunge, sauna, compression.',title:'THE ROOM THAT BUILT THE COMEBACK',quote:'the comeback nobody saw was built in here 🥶 recovery day @tucsonsportsrecovery, plunge then boots then repeat. could you sit in the plunge longer than me?? 👀 #recovery #coldplunge #heptathlon #trackandfield #explorepage',tie:'Her feed already documents a two-year comeback from shin surgery; the unglamorous rehab grind is her actual content. A recovery studio is where that grind lives. Content: a relatable, hook-led recovery-day Reel. Proof: 16 recovery and beauty posts, a sponsored skincare post 215 percent above her median, top post 366k likes.'},
+    {n:'06',ath:'Matthew Lado',sport:'Football OL',year:'Fr',photo:'06_Matthew_Lado.png',brand:'YogaOasis',cat:'Yoga studio',bucket:'Wellness & Recovery',ig:'@yogaoasistucson',site:'yogaoasis.com',logo:'06_YogaOasis.png',brandNote:'Established Tucson yoga studio with multiple locations.',title:'THE BIGGEST GUY IN THE ROOM',quote:'the big fella\'s secret training arc is just… breathing 🧘 reset day @yogaoasistucson 🌵',tie:'A 300-pound lineman who quotes All Might and Asta and already did a paid Tucson yoga partnership. The unexpected-body-in-the-studio image is the hook, and he has proven he will do it. Content: an anime-coded reset Reel, the biggest guy on the quietest mat. Proof: his Yoga Loft Tucson deal.'},
+    {n:'07',ath:'Dana Prikrylová',sport:'Triathlon',year:'Jr',photo:'07_Dana_Prikrylova.png',brand:'Tucson Endurance Performance Center',cat:'Endurance / bike fitting',bucket:'Wellness & Recovery',ig:'@tucsonendurancecenter',site:'tucsonendurancecenter.com',logo:'07_Tucson-Endurance-Center.png',brandNote:'Tucson hub for triathlon, cycling, and bike fitting.',title:'I CHOSE THIS DESERT',quote:'base training in the desert, day by day 👣🌵 swim, bike, run, repeat with @tucsonendurancecenter. krok za krokem to LA28 ✨',tie:'A Czech triathlete chasing LA28 who posts honest bilingual recaps and trains three weeks of base in the desert. TEPC is the endurance shop that fits the bike and the life. Content: a base-training day, swim-bike-run across the desert, step by step. Proof: her desert-training post 128 percent above median, international results.'},
+    {n:'08',ath:'Margareta Vrablová',sport:'Triathlon',year:'So',photo:'08_Margareta_Vrablova.png',brand:'Tucson Cold Plunge',cat:'Cryotherapy / cold plunge',bucket:'Wellness & Recovery',ig:'',site:'tucsoncoldplunge.com',logo:'08_Tucson-Cold-Plunge.png',brandNote:'Recovery center: cold plunge, sauna, and red light.',title:'COLD IS THE RESET',quote:'swim, bike, run, repeat, then the plunge 🥶🌵 best reset after a hard week!! thank you @tucsoncoldplunge 🫶🏼',tie:'Her recaps put the result up top, then process and gratitude, with a home race in Tucson. A cold-plunge studio is the recovery an endurance athlete actually uses between races. Content: a how-I-reset Reel, the plunge, the calm after a hard week. Proof: her Tucson home-race content and recovery-season story.'},
+    {n:'09',ath:'Olivia Ramey',sport:'Soccer GK',year:'Sr',photo:'09_Olivia_Ramey.png',brand:'Elevate Mental Health',cat:'Athlete mental performance',bucket:'Wellness & Recovery',ig:'@elevatementalhealthaz',site:'elevatementalhealthaz.com',logo:'09_Elevate-Mental-Health.png',brandNote:'Arizona mental-health and athlete-performance practice.',title:'STRENGTH IS MENTAL TOO',quote:'strength isn\'t just physical, it\'s mental too 🤍 grateful for the work behind the scenes @elevatementalhealthaz. so much joy in the journey',tie:'Her best non-game posts are Mental Health Awareness features and faith-and-joy reflections. Elevate specializes in athlete mental performance, so this has real substance. Content: a calm, honest piece on the mental side of keeping. Proof: her own mental-health features and earnest voice.'},
+    {n:'10',ath:'Sophie Derr',sport:'Gymnastics',year:'Jr',photo:'10_Sophie_Derr.png',brand:'ZL MedAesthetics',cat:'Med spa / aesthetics',bucket:'Beauty & Style',ig:'@zlmedaesthetics',site:'zlmedaesthetics.com',logo:'10_ZL-MedAesthetics.png',brandNote:'Catalina Foothills medical spa for skincare and aesthetics.',title:'THEATER KID GLOW-UP',quote:'gym where it happened, now the glow-up where it happens ✨ theater kid energy @zlmedaesthetics. btfd 🌵',tie:'She is a theater kid, and that is the hook, not gym-floor precision. Sophie captions in musical-theater wordplay (her McKale post: "we were in the gym where it happened"), so the glow-up becomes her stage, getting ready treated like the moment before a performance. Content: a witty gym-to-glam reveal in her own theatrical voice. She is a GymCat MVP who already makes clever, polished glam content with no deals yet, and the wordplay is what makes it hers.'},
+    {n:'11',ath:'Ella Neubauer',sport:'Beach Volleyball',year:'Fr',photo:'11_Ella_Neubauer.png',brand:'Skin Spectrum',cat:'Dermatology / sun care',bucket:'Beauty & Style',ig:'@skinspectrum',site:'skinspectrum.com',logo:'11_Skin-Spectrum.png',brandNote:'Tucson aesthetic-dermatology and sun-care practice.',title:"SUN'S OUT, SKIN COVERED",quote:'sun\'s out all day out here ☀️ taking care of my skin with @skinspectrum. super duper blessed 🙌🏼',tie:'A beach-volleyball player and model who lives in the Arizona sun, with very short, cheery posts. Skin Spectrum is sun-care dermatology, so this is a real need for her sport, not a stretch. Content: a light desert-sun-covered carousel. Her sunrise-aesthetic top post and a sport played entirely in Arizona UV make sun care genuinely hers.'},
+    {n:'12',ath:'Cornelius Warren III',sport:'Football RB',year:'Fr',photo:'12_Cornelius_Warren_III.png',brand:'The Underestimated City',cat:'Tucson streetwear',bucket:'Beauty & Style',ig:'@reptuc',site:'theunderestimatedcity.com',logo:'12_The-Underestimated-City.png',brandNote:'Tucson-identity streetwear from the downtown MSA Annex.',title:'I BUILT MINE',quote:'from the city they slept on to the one they underestimate 💍 me x @reptuc, for everybody tryna make it out. drop soon ‼️ #lᴀᴛʀɪᴅᴇ',tie:'A kid the city prayed to make it out who designs and sells his own label, ProfitSinners. The Underestimated City is a brand about a city that gets slept on, so this is designer to designer. Content: a small collab capsule with behind-the-scenes of him designing then wearing it. Proof: real ProfitSinners drops, about 65 percent above his median.'},
+    {n:'13',ath:'Cecelia Woods',sport:'Track',year:'Jr',photo:'13_Cecelia_Woods.png',brand:'QMULATIVE',cat:'Lifestyle apparel',bucket:'Beauty & Style',ig:'@qmulative',site:'qmulative.com',logo:'13_QMULATIVE.png',brandNote:'Tucson lifestyle apparel, home of the Arizona Pocket tee.',title:'FROM CAPTION TO TEE',quote:'turned one of my captions into a fit 😽✅ me x @qmulative, Tucson on the chest. Wii really did this one #trusttheprocess',tie:'Her wordplay is the hook, not her ambassador status. Cecelia is the roster\'s pun queen ("Nintendo on the porch cuz Wii outside"), and QMULATIVE is a Tucson label built on putting a clever line on a tee. The campaign is her co-designing a QMULATIVE shirt from one of her own captions, a real collab, not a logo placement. She is already a paid apparel ambassador with her own promo code, so the format is proven, and the wordplay is what makes it hers.'},
+    {n:'14',ath:'Sumayah Sugapong',sport:'Basketball',year:'Jr',photo:'14_Sumayah_Sugapong.jpg',brand:"Nick's Sari-Sari Store",cat:'Filipino market / restaurant',bucket:'Heritage',ig:'@nicksarisari',site:'nicksarisaristore.com',logo:'14_Nicks-Sari-Sari.png',brandNote:'Longstanding Tucson Filipino market and restaurant.',title:'PLAYING FOR THE ISLANDS',quote:'tastes like home 🇵🇭🤍 thank you @nicksarisari. small town fame, island roots. الحمدلله',tie:'She plays for the Philippines national team and signs posts with Arabic faith phrasing and San Diego roots. Nick\'s is Tucson\'s Filipino market, so this is heritage, not a category. Content: a warm food-that-tastes-like-home visit. Proof: her national-team affiliation and earnest gratitude voice.'},
+    {n:'15',ath:'Sina Talataina',sport:'Softball',year:'Fr',photo:'15_Sina_Talataina.png',brand:'Solid Grindz',cat:'Hawaiian / Pacific Islander food',bucket:'Heritage',ig:'@solidgrindz',site:'solidgrindz.com',logo:'15_Solid-Grindz.png',brandNote:'Tucson Hawaiian-style kitchen serving island plates.',title:'ROOTS ON THE PLATE',quote:'island plate, happy heart 🌺😇 @solidgrindz hits home. me x3',tie:'A freshman repping American Samoa, very short and wholesome. Solid Grindz is Tucson\'s Hawaiian and Pacific Islander kitchen, a genuine heritage pairing. Content: a sweet island-plate post about family and roots. Proof: her American Samoa representation and soft, sincere voice.'},
+    {n:'16',ath:'Tianyi Xiong',sport:"Men's Golf",year:'Jr',photo:'16_Tianyi_Xiong.png',brand:'Loews Ventana Canyon',cat:'Golf / tennis resort',bucket:'Sport-Native',ig:'',site:'loewshotels.com/ventana-canyon',logo:'16_Loews-Ventana-Canyon.png',brandNote:'Catalina resort with championship golf and tennis.',title:'THE COURSE IS THE OFFICE',quote:'early tee, desert course, in the lab ⛳️ @loewsventana. not done yet 哦耶✌️ #beardown',tie:'A current golfer with dry, minimal captions in English and Chinese and an NCAA Championship run. Loews Ventana is a golf-and-tennis resort, his actual workplace. Content: a quiet early-tee desert-course piece, the reads he studies. Proof: his golf-club deal and Final Four run.'},
+    {n:'17',ath:'Sofia Cortes-Browne',sport:'Soccer GK',year:'So',photo:'17_Sofia_Cortes-Browne.png',brand:'Frost Gelato',cat:'Gelato · Tucson',bucket:'Sport-Native',ig:'@frostgelato',site:'frostgelato.com',logo:'17_Frost-Gelato.svg',brandNote:'Tucson-founded gelato shop, scooping since 2005.',title:'DEFROSTING IN THE DESERT',quote:'the Canadian found the only acceptable way to cool down in the desert 🍁🍨 @frostgelato. defrosting, reversed :)',tie:'Sofia is the keeper who never stops joking about the cold-to-desert swap ("A Canadian winter," "Defrosting :)"). Frost Gelato is the Tucson-founded gelato shop, so the campaign writes itself: the Canadian who traded the freeze for the desert, cooling off the one way that makes sense out here. Content: a dry, deadpan "Canadian reviews the desert" gelato bit in her voice. She already did a local cafe partnership, so this kind of content is proven, and the Canada-in-the-desert humor is what makes it hers.'},
+    {n:'18',ath:'Sereniti Trice',sport:'Softball',year:'So',photo:'18_Sereniti_Trice.png',brand:'Musselman Honda Circuit',cat:'Go-kart racing · Tucson',bucket:'Food & Fuel',ig:'@musselmanhondacircuit',site:'mhcircuit.com',logo:'18_Musselman-Honda-Circuit.png',brandNote:'Tucson outdoor go-kart circuit, a Suzuka-inspired road course.',title:'FASTEST ON THE TEAM',quote:'they say I\'m fast on the bases 😼💨 put me on a real track @musselmanhondacircuit. biddy don\'t lose #softball #arizona #explorepage',tie:'Her speed is the hook. Sereniti is a base-stealing slap hitter, the smug-cat "Biddy" whose game is being faster than everyone, so the campaign is the fastest player on the team taking on an actual racetrack. Content: a start-line bit and a fastest-on-the-bases-meets-fastest-in-Tucson Reel in her trend-driven voice. She has the biggest organic reach on the softball team as a viral creator, and the speed is what makes the pairing hers.'},
+    {n:'19',ath:'Britt Carlson',sport:'Volleyball',year:'Jr',photo:'19_Britt_Carlson.png',brand:'Brooklyn Pizza Company',cat:'Pizza · 4th Ave',bucket:'Food & Fuel',ig:'@brooklynpizzaco',site:'brooklynpizzaco.com',logo:'19_Brooklyn-Pizza-Co.png',brandNote:'Solar-powered New York-style pizza on 4th Avenue.',title:'TWO OF A KIND',quote:'two of a kind, one order 🍕🤞🏻 me n twin run it back @brooklynpizzaco. 4th ave after practice >>> bear down baby #year4',tie:'The hook is the twin. Britt captions her firsts as "last first gameday with twin," so the campaign is two of a kind sharing one standing order. Content: a recurring twins-order bit at the 4th Ave shop, same slice, same hype, the kind of duo content people screenshot. She already put her name on a Tucson restaurant, so she does local-food content, and the twin is what makes this one hers.'},
+    {n:'20',ath:'Nora Francois',sport:'Basketball',year:'5th',photo:'20_Nora_Francois.jpg',brand:'Cuisine Classique',cat:'Cooking school',bucket:'Food & Fuel',ig:'@cuisineclassique',site:'cuisineclassique.com',logo:'20_Cuisine-Classique.png',brandNote:'Longtime Tucson gourmet cooking school.',title:'WRITING THE BOOK',quote:'my recipes: written. my apron: on. time to go pro in the kitchen 😌🥂 class @cuisineclassique #thatsawrapfolks',tie:'The wittiest voice on the roster, and she is literally writing a cookbook. Cuisine Classique is Tucson\'s cooking school, the stage for a real culinary identity. Content: a go-pro-in-the-kitchen Reel, her cookbook brought to a real class. Proof: her own cookbook and food content.'},
+    {n:'21',ath:'Anyssa Wild',sport:'Softball',year:'So',photo:'21_Anyssa_Wild.png',brand:'Food Conspiracy Co-op',cat:'Natural foods co-op · 4th Ave',bucket:'Food & Fuel',ig:'',site:'foodconspiracy.coop',logo:'21_Food-Conspiracy.png',brandNote:'Member-owned 4th Avenue natural-foods co-op since 1971.',title:'FOOD AS FUEL',quote:'fuel the body, feed the soul 🤍 fresh from @foodconspiracy. "Let all that you do be done in love." 1 Cor 16:14',tie:'A faith-forward player who quotes scripture with citations and posts her own healthy recipes. Food Conspiracy is the member-owned 4th Ave co-op, exactly her values. Content: a calm grocery-run-to-home-cooked-meal piece. Proof: her recipe posts and devotional voice.'},
+    {n:'22',ath:'Bryson Nielsen',sport:'Cross Country',year:'Fr',photo:'22_Bryson_Nielsen.png',brand:'The Running Shop',cat:'Run-specialty store · Tucson',bucket:'Food & Fuel',ig:'@therunningshopaz',site:'runningshopaz.com',logo:'22_The-Running-Shop.png',brandNote:'Longtime Tucson run-specialty store fitting runners on Campbell Ave.',title:'THE COMEBACK, MILE BY MILE',quote:'Injured most of the year, then a national title 🥇 grateful for @therunningshopaz, fitted for every mile of the comeback. Thankful. 🐻⬇️',tie:'The comeback is the hook, not the miles. Bryson was injured most of the year and came back to win a national title, and he writes long, faith-and-gratitude recaps. The Running Shop is the Tucson institution that fits runners by hand, so the campaign is the comeback runner and the shop that got him back, mile by mile. Content: a comeback-told-one-fitting-at-a-time piece in his earnest, exact-splits voice. He is a Big 12 1000m champion with Brooks and Gatorade deals.'},
+    {n:'23',ath:'Teagan White',sport:'Gymnastics',year:'So',photo:'23_Teagan_White.png',brand:'Monsoon Chocolate',cat:'Artisan chocolate',bucket:'Food & Fuel',ig:'@monsoonchocolate',site:'monsoonchocolate.com',logo:'23_Monsoon-Chocolate.png',brandNote:'Award-winning Tucson bean-to-bar chocolate maker.',draft:true,title:'MONSOON SZN',quote:'monsoon szn just hit different ❕🍫 @monsoonchocolate, the only szn I\'m not flipping out of. flip szn fuel 🤸🏼🌵',tie:'Her wordplay is the hook, not handmade precision. Teagan marks her life in seasons ("rookieszn," "flip szn"), and Monsoon Chocolate is named for the Tucson monsoon, a season she can claim as her own. The campaign is hers to pun, monsoon szn, the local treat that matches her playful voice and her comeback energy. Content: a short monsoon-szn bit in her exclamation-point pun style. She already makes upbeat, polished sponsored content (Hollister, Rangefit).'},
+    {n:'24',ath:'Gio Richardson',sport:'Football',year:'Fr',photo:'24_Gio_Richardson.png',brand:'Mister Car Wash',cat:'Car wash · Tucson HQ',bucket:'Tucson Identity',ig:'@mistercarwash',site:'mistercarwash.com',logo:'24_Mister-Car-Wash.png',brandNote:'Tucson-headquartered car-wash brand, nationwide.',draft:true,title:'FRESH EVERY TIME OUT',quote:'clean whip, Dirty T 🔱⬇️ @mistercarwash keep it spotless. stayed home for a reason, I\'m that boy.',tie:'A true Arizona native who brands Tucson the Dirty T and posts Staying home pride, with fits, fishing, and cars. Mister Car Wash is the Tucson-HQ brand, so made here, keep it clean here is his own story. Content: a swagger clean-whip-Dirty-T Reel. Proof: his Dirty T and Staying home posts, 10k-plus likes, and AZ-native roots.'},
+    {n:'25',ath:'Regan Shockey',sport:'Softball',year:'Jr',photo:'25_Regan_Shockey.png',brand:'Choice Greens',cat:'Healthy fast-casual',bucket:'Food & Fuel',ig:'@choicegreens',site:'choicegreens.com',logo:'25_Choice-Greens.png',brandNote:'Tucson-founded healthy fast-casual salads and bowls.',draft:true,title:'EATING HEALTHY, FOR ONCE',quote:'character development: I ordered a salad 😤🥗 @choicegreens we can brainstorm my redemption arc together #softball #arizona #explorepage #d1 #notataco',tie:'Her comedy is the hook, not her follower count. Regan is the roster\'s comedy creator ("C- on the jokes") who very publicly loves Taco Bell, so the campaign is the self-aware redemption arc: the junk-food queen ordering a salad for once. Content: a funny trying-to-be-healthy series in her stacked-hashtag, meme voice, with her bestie as the foil. She has the deepest deal history and viral comedic reach (top post 81k).'}
+  ];
+
+  bucketOrder = ['Tucson Identity','Wellness & Recovery','Beauty & Style','Heritage','Sport-Native','Food & Fuel'];
+
+  brandInitials(b){
+    const stop = ['the','of','and'];
+    const w = b.split(/[\s/]+/).filter(x => x && !stop.includes(x.toLowerCase()));
+    if(w.length === 1) return w[0].slice(0,2).toUpperCase();
+    return (w[0][0] + w[1][0]).toUpperCase();
+  }
+
+  decorate(d){
+    const showElig = this.props.showEligibility ?? true;
+    return {
+      ...d,
+      photo: 'uploads/' + d.photo,
+      logo: d.logo ? 'uploads/' + d.logo : '',
+      hasLogo: !!d.logo,
+      noLogo: !d.logo,
+      brandInitials: this.brandInitials(d.brand),
+      sportYear: d.sport + ' · ' + d.year,
+      contact: d.ig ? d.ig : d.site,
+      draft: !!d.draft,
+      flag: d.flag || '',
+      showFlag: !!(d.flag && showElig)
+    };
+  }
+
+  renderVals(){
+    const all = this.data.map(d => this.decorate(d));
+    const grouped = (this.props.groupByCategory ?? true);
+
+    let groups;
+    if(grouped){
+      groups = this.bucketOrder.map(b => {
+        const items = all.filter(x => x.bucket === b);
+        return { label: b, count: items.length + (items.length === 1 ? ' idea' : ' ideas'), items };
+      }).filter(g => g.items.length);
+    } else {
+      groups = [{ label: 'All 25 campaigns', count: '25 ideas', items: all }];
+    }
+
+    return {
+      groups,
+      showClosing: this.props.showClosing ?? true,
+      valueProps: [
+        {no:'1', title:'Surface the idea', body:'Every concept is anchored to real evidence: a deal already done, content already made, an activation that already happened.'},
+        {no:'2', title:'Match athlete × brand', body:'JABA pairs your roster with the right local partner, including heritage connections no generic agency would find.'},
+        {no:'3', title:'Run the workflow', body:'From outreach to signed contract to content review, the whole campaign moves through one pipeline.'},
+        {no:'4', title:'Track the ROI', body:'Reach, engagement, and deliverables tracked per campaign, so leadership sees what every partnership returns.'}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
